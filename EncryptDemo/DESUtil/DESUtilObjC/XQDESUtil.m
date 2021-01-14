@@ -22,6 +22,7 @@
     memset(buffer, 0, sizeof(char));
     Byte iv[] = {1,2,3,4,5,6,7,8};
     size_t numBytesEncrypted = 0;
+
     CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt,
                                           kCCAlgorithmDES,
                                           kCCOptionPKCS7Padding|kCCOptionECBMode,

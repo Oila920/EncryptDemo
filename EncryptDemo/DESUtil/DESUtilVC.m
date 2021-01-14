@@ -17,9 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    秘钥为8字节，64位，因为其中一位没有用到，实质是56位，写7字节也是足够安全的
     NSString *key = @"12345678";
     NSString *pwd = @"qwer";
     
+//    ECB模式
     NSString *encryptStr = [XQDESUtil encryptDES:pwd key:key];
     NSString *decryptStr = [XQDESUtil decryptDES:encryptStr key:key];
     

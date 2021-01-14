@@ -66,6 +66,7 @@
     bufferPtr = malloc( bufferPtrSize * sizeof(uint8_t));
     memset((void *)bufferPtr, 0x0, bufferPtrSize);
     const void *vkey = (const void *)[key UTF8String];
+//  其中一个参数 kCCOptionPKCS7Padding | kCCOptionECBMode,将其改为kCCOptionPKCS7Padding，就是CBC加密，默认是CBC加密；参数中为nil的为IV值，CBC模式时候需要设置，一般为8字节长度的16进制随机数
     ccStatus = CCCrypt(kCCDecrypt,
                        kCCAlgorithm3DES,
                        kCCOptionPKCS7Padding | kCCOptionECBMode,

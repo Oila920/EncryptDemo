@@ -12,15 +12,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XQAESUtil : NSObject
 
-//  AES256
-+ (NSString *)aes25EncryptWithText:(NSString *)str key:(NSString *)key;
+//  AES256 ECB
++ (NSString *)aes256ECBEncryptWithText:(NSString *)str key:(NSString *)key;
 
-+ (NSString *)aes256DecryptWithText:(NSString *)str key:(NSString *)key;
++ (NSString *)aes256ECBDecryptWithText:(NSString *)str key:(NSString *)key;
+
+//AES256 CBC
++ (NSString *)aes256CBCEncryptWithText:(NSString *)str key:(NSString *)key iv:(NSString *)iv;
+
++ (NSString *)aes256CBCDecryptWithText:(NSString *)str key:(NSString *)key iv:(NSString *)iv;
 
 //  AES128
-+ (NSString *)aes128EncryptWithText:(NSString *)str key:(NSString *)key;
++ (NSString *)aes128ECBEncryptWithText:(NSString *)str key:(NSString *)key;
 
-+ (NSString *)aes128DecryptWithText:(NSString *)str key:(NSString *)key;
++ (NSString *)aes128ECBDecryptWithText:(NSString *)str key:(NSString *)key;
 
 @end
 

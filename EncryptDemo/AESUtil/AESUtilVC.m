@@ -21,6 +21,7 @@
     [self AES128];
     
     [self AES256];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -28,14 +29,17 @@
 {
     /*
      aes256
-     秘钥为32字节，即hex64位，256位
+     秘钥为32字节，256位
      */
     NSString *key = @"12345678901234567890123456789012";
     
-    NSString *pwd = @"qwer";
+    NSString *pwd = @"qwerqwerqwer";
     
-    NSString *encryptStr = [XQAESUtil aes25EncryptWithText:pwd key:key];
-    NSString *decryptStr = [XQAESUtil aes256DecryptWithText:encryptStr key:key];
+//  根据数据块大小而定，126为16字节的随机数，256块则为32字节的随机数，可以为16进制数，也可以为是十进制数，iOS数据块为128
+    NSString *iv = @"123456789012EC56";
+//    CBC模式
+    NSString *encryptStr = [XQAESUtil aes256CBCEncryptWithText:pwd key:key iv:iv];
+    NSString *decryptStr = [XQAESUtil aes256CBCDecryptWithText:encryptStr key:key iv:iv];
     
     NSLog(@"\n\nAES256加密后的字符串：%@\nAES256解密后的字符串：%@\n\n",encryptStr,decryptStr);
 }
@@ -48,8 +52,8 @@
     NSString *key = @"1234567890123456";
     NSString *pwd = @"qwer";
     
-    NSString *encryptStr = [XQAESUtil aes128EncryptWithText:pwd key:key];
-    NSString *decryptStr = [XQAESUtil aes128DecryptWithText:encryptStr key:key];
+    NSString *encryptStr = [XQAESUtil aes128ECBEncryptWithText:pwd key:key];
+    NSString *decryptStr = [XQAESUtil aes128ECBDecryptWithText:encryptStr key:key];
     
     NSLog(@"\n\nAES128加密后的字符串：%@\nAES128解密后的字符串：%@\n\n",encryptStr,decryptStr);
 }
