@@ -11,7 +11,7 @@
 
 /* 公钥长度：是SM2曲线上的一个点，用横坐标和纵坐标两个分量来表示，记为（x，y），简记为Q，一个分量的长度是256位；
     SM2非压缩公钥格式字节串长度为65字节，压缩格式长度为33字节，若公钥y坐标最后一位为0，则首字节为0x02，否则为0x03。非压缩格式公钥首字节为0x04。
-    公钥为Bit string类型，内容为04||X||Y，其中X和Y分别标识公钥的X分量和Y分量。其长度各为256位。
+    公钥为Bit string类型，内容为04||X||Y，其中X和Y分别表示公钥的X分量和Y分量。其长度各为256位。
 */
 // 公钥 除了开头的04：64字节 hex128 512位 hex格式
 static NSString *sm2Pubkey = @"0408E3FFF9505BCFAF9307E665E9229F4E1B3936437A870407EA3D97886BAFBC9C624537215DE9507BC0E2DD276CF74695C99DF42424F28E9004CDE4678F63D698";
@@ -20,6 +20,7 @@ static NSString *sm2Pubkey = @"0408E3FFF9505BCFAF9307E665E9229F4E1B3936437A87040
 //  私钥 32字节 64hex 256位 hex格式
 static NSString *sm2Prikey = @"90F3A42B9FE24AB196305FD92EC82E647616C3A3694441FB3422E7838E24DEAE";
 
+//  私钥 16字节 32hex 128位 hex格式
 static NSString *sm4key = @"86617055488F644EAAC2D9C2C1217B15";
 
 
@@ -103,7 +104,7 @@ static NSString *sm4key = @"86617055488F644EAAC2D9C2C1217B15";
 #pragma mark SM4ECB模式加解密
 - (IBAction)SM4ECBEncryptBtnClicked:(UIButton *)sender {
     
-    NSString *pwd = @"qwer1234qwer1234qwer1234qwer1234";
+    NSString *pwd = @"123456";
     
     NSString *sm4ECBE = [GMSm4Utils ecbEncryptText:pwd key:sm4key];
 
@@ -116,7 +117,7 @@ static NSString *sm4key = @"86617055488F644EAAC2D9C2C1217B15";
 #pragma mark SM4CBC模式加解密
 - (IBAction)SM4CBCEncryptBtnClicked:(UIButton *)sender {
 
-    NSString *pwd = @"qwer1234qwer1234qwer1234qwer1234";
+    NSString *pwd = @"123456";
 
         //    CBC 模式需传入 32 字节 Hex 编码格式 ivec 字符串
     //    返回值：加密后的字符串，Hex 编码格式
